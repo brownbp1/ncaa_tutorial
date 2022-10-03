@@ -1,0 +1,4 @@
+(1) cd pdb_files
+(2) bash ../../../../../scripts/get_pdbs.v2.bash ../../inputs/cullpdb_pc20_res1.6_R0.25_d110520_chains1859_first_100 
+(3) cd ..
+(4)  /home/brownbp1/Rosetta/main/source/bin/UnfoldedStateEnergyCalculator.linuxgccrelease -ignore_unrecognized_res -in:file:l pdb_files/pdb.5.list -usec:residue_name NVL -no_optH true -detect_disulf false -extrachi_cutoff 0 -mute all -unmute protocols.UnfoldedStateEnergyCalculator -unmute protocols.jd2.PDBJobInputer -out:file:score_only NVL.unfolded.sc -overwrite > NVL.unfolded.log

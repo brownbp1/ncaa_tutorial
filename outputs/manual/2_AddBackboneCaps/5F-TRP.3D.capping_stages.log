@@ -1,0 +1,100 @@
+=std=bcl::util=> Logger was changed to: File with identifier: 5F-TRP.3D.capping_stages.log
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:Mutate -input_filenames ../1_RemoveProtectingGroups/5F-TRP.3D.sdf -implementation 'RemoveAtom(mutable_atoms=14)' 'AddMedChem(mutable_atoms=1,medchem_library=/home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/Ace.sdf)' 'AddMedChem(mutable_atoms=0,medchem_library=/home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/NMe.sdf)' -output 5F-TRP.3D.capping_stages.sdf -logger File 5F-TRP.3D.capping_stages.log 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:Mutate
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> 5F-TRP.3D.capping_stages.log
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <filenames> ../1_RemoveProtectingGroups/5F-TRP.3D.sdf
+-input_start not set
+   <start> 0 (default)
+-input_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity not set
+-implementation set
+   <mutate> RemoveAtom(mutable_atoms=14)
+   <mutate> AddMedChem(mutable_atoms=1,medchem_library=/home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/Ace.sdf)
+   <mutate> AddMedChem(mutable_atoms=0,medchem_library=/home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/NMe.sdf)
+-mutable_atoms not set
+-accumulate not set
+-recenter not set
+-output set
+   <output> 5F-TRP.3D.capping_stages.sdf
+
+========================================================================================================================
+
+=std=bcl::chemistry=> RemoveAtom!
+=std=bcl::chemistry=> Skipping drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> Generating single conformer
+=std=bcl::chemistry=> AddMedChem!
+=std=bcl::chemistry=> Skipping drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 1 15 16 17 
+=std=bcl::chemistry=> Generating single conformer
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 4
+=std=bcl::chemistry=> Found 2 rotatable bonds, 0 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> AddMedChem!
+=std=bcl::chemistry=> Skipping drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 0 18 19 
+=std=bcl::chemistry=> Generating single conformer
+=std=bcl::util=> FindFrags has run for 1.13952 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 5
+=std=bcl::chemistry=> Found 2 rotatable bonds, 0 flexible rings, 2 changeable bond angles; 
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:04, peak virtual memory used: 1321 MB, peak physical RAM used: 1206 MB
+=std=bcl::util=> ConformationComparison has run for 0.003616 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.007337 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.039306 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.00071 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.007043 seconds
+=std=bcl::util=> mutate_chain has run for 0.158997 seconds
+=std=bcl::util=> Sampling Total has run for 0.36445 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.001356 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.024226 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.019928 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.004073 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.881694 seconds
+=std=bcl::util=> FindFrags has run for 1.13952 seconds
+=std=bcl::util=> vdw score time has run for 0.000461 seconds

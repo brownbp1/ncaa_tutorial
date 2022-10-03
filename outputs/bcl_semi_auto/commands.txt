@@ -1,0 +1,1 @@
+(1) bash ../../scripts/quick_parmgen.sh ../../inputs/Fmoc-5F-TRP.sdf 5FW . > quick_paramgen.log

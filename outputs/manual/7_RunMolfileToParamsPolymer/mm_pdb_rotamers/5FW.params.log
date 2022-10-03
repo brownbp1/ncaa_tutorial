@@ -1,0 +1,115 @@
+No valid centroid coords are provided, calculate centroid manually
+Centering ligands at (   4.539,   -1.145,    3.264)
+Partial charges already fully assigned, no changes made; net charge -1.065
+WARNING: fragment 1 has 36 total atoms including H; protein residues have 7 - 24 (DNA: 33)
+WARNING: fragment 1 has 6 rotatable bonds; protein residues have 0 - 4
+Average 36.0 atoms (20.0 non-H atoms) per fragment
+(Proteins average 15.5 atoms (7.8 non-H atoms) per residue)
+Preforming polymer modifications
+the molecule has 36 atoms
+WARNING: very small d=0.000000 for N1
+WRITING ICOOR_INTERNAL: 
+Wrote polymer params file 5FW.params
+File 5FW_rotamer.pdb already exists -- empty file now
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Wrote PDB file 5FW_rotamer.pdb
+Using PDB rotamers

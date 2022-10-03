@@ -1,0 +1,1682 @@
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:ConformerGenerator -explicit_aromaticity -add_h -generate_3D -max_iterations 2000 -top_models 1 -ensemble_filenames /home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/Fmoc-5F-TRP.sdf -conformers_single_file Fmoc-5F-TRP_3d.sdf 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:ConformerGenerator
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+==============================================================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger not set
+   <> Default (default)
+   <identifier>  (default)
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+==============================================================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-ensemble_filenames set
+   <filenames> /home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/Fmoc-5F-TRP.sdf
+-ensemble_start not set
+   <start> 0 (default)
+-ensemble_max not set
+   <number> 18446744073709551615 (default)
+-add_h set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-natives not set
+-conformation_comparer not set
+   <rmsd_type> SymmetryRMSD (default)
+   <tolerance> 0.0 (default)
+-max_iterations set
+   <max_iterations> 2000
+-output_ligand_data not set
+-top_models set
+   <top_models> 1
+-failed_3D not set
+-output_rmsd_score not set
+-conformers_single_file set
+   <conformers_single_file> Fmoc-5F-TRP_3d.sdf
+-conformers_separate_files not set
+-minimum_number_conformations not set
+-change_chirality not set
+-generate_3D set
+-cluster not set
+-skip_cluster not set
+-rnd_dihedral_mutate_weight not set
+   <mutate_weight> 0.0 (default)
+-skip_rotamer_dihedral_sampling not set
+-skip_bond_angle_sampling not set
+-skip_ring_sampling not set
+-clash_resolution not set
+   <max_clash_resolution_iterations> 0.1 (default)
+-max_clash_tolerance not set
+   <max_clash_tolerance> 0.1 (default)
+-rotamer_library not set
+   <> cod (default)
+
+==============================================================================================================================================================
+
+ Status: Counting molecules for ensemble Status: Found 1 molecules                Status: [                    ] 0% 0/1 molecules read
+=crt=bcl::app=>  iterating through ensemble in ANC - 0
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 114
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 10 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+ Status: [********************] 100% 1/1 molecules read
+==============================================================================================================================================================
+
+=slt=bcl=> bcl has run for 00:00:04, peak virtual memory used: 1344 MB, peak physical RAM used: 1229 MB
+=std=bcl::util=> Clustering has run for 0.049502 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.14526 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.121306 seconds
+=std=bcl::util=> Sampling Total has run for 1.45115 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.010705 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.191422 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 0.050746 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.071834 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.016198 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.01632 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.05265 seconds
+=std=bcl::util=> mutate_chain has run for 0.422035 seconds
+=std=bcl::util=> mutate_ring has run for 0.001186 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.885522 seconds
+=std=bcl::util=> FindFrags has run for 0.801057 seconds
+=std=bcl::util=> RotamerLibraryFile reading files has run for 3.17225 seconds
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:GenerateRosettaNCAAInstructions -generate_3D -chirality L_AA -add_h -neutralize -explicit_aromaticity -input_filenames Fmoc-5F-TRP_3d.sdf -output_prefix Fmoc-5F-TRP_rosetta -extra_properties ALPHA_AA 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:GenerateRosettaNCAAInstructions
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+==============================================================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger not set
+   <> Default (default)
+   <identifier>  (default)
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+==============================================================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <filenames> Fmoc-5F-TRP_3d.sdf
+-input_start not set
+   <start> 0 (default)
+-input_max not set
+   <number> 18446744073709551615 (default)
+-add_h set
+-remove_h not set
+-neutralize set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-add_atom_type not set
+-output_prefix set
+   <output_prefix> Fmoc-5F-TRP_rosetta
+-generate_3D set
+-sidechain_sample_by_parts not set
+-extra_properties set
+   <properties> ALPHA_AA
+-chirality set
+   <Sidechain chirality> L_AA
+-generate_partial_charge_file not set
+-ca_chi1_ids not set
+   <CA index>  (default)
+   <Chi 1 index>  (default)
+
+==============================================================================================================================================================
+
+ Status: Counting molecules for input Status: Found 1 molecules             Status: [                    ] 0% 0/1 molecules read
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 99
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+ Status: [********************] 100% 1/1 molecules read
+==============================================================================================================================================================
+
+=slt=bcl=> bcl has run for 00:00:04, peak virtual memory used: 1330 MB, peak physical RAM used: 1216 MB
+=std=bcl::util=> ConformationComparison has run for 0.007535 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.0958 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.091528 seconds
+=std=bcl::util=> Sampling Total has run for 1.17192 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.006493 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.133598 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 0.033982 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.077108 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.013222 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.008594 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.044037 seconds
+=std=bcl::util=> mutate_chain has run for 0.369164 seconds
+=std=bcl::util=> mutate_ring has run for 0.000119 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.885133 seconds
+=std=bcl::util=> FindFrags has run for 0.740252 seconds
+=std=bcl::util=> RotamerLibraryFile reading files has run for 3.14296 seconds
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:ConformerGenerator -explicit_aromaticity -conformation_comparer SymmetryRMSD 0.25 -max_iterations 2000 -top_models 50 -cluster -ensemble_filenames Fmoc-5F-TRP_rosetta_0.sdf -conformers_single_file 5FW_Rotamer.base.sdf 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:ConformerGenerator
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+==============================================================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger not set
+   <> Default (default)
+   <identifier>  (default)
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+==============================================================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-ensemble_filenames set
+   <filenames> Fmoc-5F-TRP_rosetta_0.sdf
+-ensemble_start not set
+   <start> 0 (default)
+-ensemble_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-natives not set
+-conformation_comparer set
+   <rmsd_type> SymmetryRMSD
+   <tolerance> 0.25
+-max_iterations set
+   <max_iterations> 2000
+-output_ligand_data not set
+-top_models set
+   <top_models> 50
+-failed_3D not set
+-output_rmsd_score not set
+-conformers_single_file set
+   <conformers_single_file> 5FW_Rotamer.base.sdf
+-conformers_separate_files not set
+-minimum_number_conformations not set
+-change_chirality not set
+-generate_3D not set
+-cluster set
+-skip_cluster not set
+-rnd_dihedral_mutate_weight not set
+   <mutate_weight> 0.0 (default)
+-skip_rotamer_dihedral_sampling not set
+-skip_bond_angle_sampling not set
+-skip_ring_sampling not set
+-clash_resolution not set
+   <max_clash_resolution_iterations> 0.1 (default)
+-max_clash_tolerance not set
+   <max_clash_tolerance> 0.1 (default)
+-rotamer_library not set
+   <> cod (default)
+
+==============================================================================================================================================================
+
+ Status: Counting molecules for ensemble Status: Found 1 molecules                Status: [                    ] 0% 0/1 molecules read
+=crt=bcl::app=>  iterating through ensemble in ANC - 0
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 100
+=std=bcl::chemistry=> Found 8 rotatable bonds, 1 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=> Found 1 isomorphisms for this molecule
+ Status: [********************] 100% 1/1 molecules read
+==============================================================================================================================================================
+
+=slt=bcl=> bcl has run for 00:00:04, peak virtual memory used: 1334 MB, peak physical RAM used: 1220 MB
+=std=bcl::util=> Clustering has run for 0.494917 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.086833 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.005635 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.116661 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 0.030194 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.067599 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.011523 seconds
+=std=bcl::util=> Sampling Total has run for 1.1869 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.082061 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.0082 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.041823 seconds
+=std=bcl::util=> mutate_chain has run for 0.338454 seconds
+=std=bcl::util=> mutate_ring has run for 0.096792 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.886564 seconds
+=std=bcl::util=> FindFrags has run for 0.629482 seconds
+=std=bcl::util=> RotamerLibraryFile reading files has run for 3.00447 seconds
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:ConformerGenerator -explicit_aromaticity -conformation_comparer SymmetryRMSD 0.125 -max_iterations 500 -top_models 20 -cluster -skip_rotamer_dihedral_sampling -skip_bond_angle_sampling -skip_ring_sampling -ensemble_filenames 5FW_Rotamer.base.sdf -conformers_single_file 5FW_Rotamer.sdf 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:ConformerGenerator
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+==============================================================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger not set
+   <> Default (default)
+   <identifier>  (default)
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+==============================================================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-ensemble_filenames set
+   <filenames> 5FW_Rotamer.base.sdf
+-ensemble_start not set
+   <start> 0 (default)
+-ensemble_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-natives not set
+-conformation_comparer set
+   <rmsd_type> SymmetryRMSD
+   <tolerance> 0.125
+-max_iterations set
+   <max_iterations> 500
+-output_ligand_data not set
+-top_models set
+   <top_models> 20
+-failed_3D not set
+-output_rmsd_score not set
+-conformers_single_file set
+   <conformers_single_file> 5FW_Rotamer.sdf
+-conformers_separate_files not set
+-minimum_number_conformations not set
+-change_chirality not set
+-generate_3D not set
+-cluster set
+-skip_cluster not set
+-rnd_dihedral_mutate_weight not set
+   <mutate_weight> 0.0 (default)
+-skip_rotamer_dihedral_sampling set
+-skip_bond_angle_sampling set
+-skip_ring_sampling set
+-clash_resolution not set
+   <max_clash_resolution_iterations> 0.1 (default)
+-max_clash_tolerance not set
+   <max_clash_tolerance> 0.1 (default)
+-rotamer_library not set
+   <> cod (default)
+
+==============================================================================================================================================================
+
+ Status: Counting molecules for ensemble Status: Found 50 molecules               Status: [                    ] 0% 0/50 molecules read
+=crt=bcl::app=>  iterating through ensemble in ANC - 0
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=std=bcl::chemistry=> Found 1 isomorphisms for this molecule
+=crt=bcl::app=>  iterating through ensemble in ANC - 1
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 2
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 3
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 4
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 5
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 6
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 7
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 8
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 9
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 10
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 11
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 12
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 13
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 14
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 15
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 16
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 17
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 18
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 19
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 20
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 21
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 22
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 23
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 24
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 25
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=std=bcl::util=> Clustering has run for 1.00635 seconds
+=crt=bcl::app=>  iterating through ensemble in ANC - 26
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 27
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 28
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 29
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 30
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 31
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 32
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 33
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 34
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 35
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 36
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 37
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 38
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 39
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 40
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 41
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 42
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 43
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 44
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 45
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 46
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 47
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 48
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+=crt=bcl::app=>  iterating through ensemble in ANC - 49
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 8
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 0 changeable bond angles; 
+ Status: [********************] 100% 50/50 molecules read
+==============================================================================================================================================================
+
+=slt=bcl=> bcl has run for 00:00:10, peak virtual memory used: 1294 MB, peak physical RAM used: 1180 MB
+=std=bcl::util=> bond_length_sampling has run for 0.000395 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.00363 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 0.000486 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.002726 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.000332 seconds
+=std=bcl::util=> Clustering has run for 1.9529 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.215155 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.586274 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.051846 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.316639 seconds
+=std=bcl::util=> Sampling Total has run for 5.86656 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.877015 seconds
+=std=bcl::util=> FindFrags has run for 1e-06 seconds
+=std=bcl::util=> RotamerLibraryFile reading files has run for 2.53641 seconds
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:AlignToScaffold /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/rotamer_library/ncaa_base/glycine_neutral.sdf.gz 5FW_Rotamer.sdf 5FW_Rotamer.ats.sdf -explicit_aromaticity 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:AlignToScaffold
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+==============================================================================================================================================================
+
+PARAMETERS
+
+- set
+   <scaffold_filename> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/rotamer_library/ncaa_base/glycine_neutral.sdf.gz
+   <ensemble_filename> 5FW_Rotamer.sdf
+   <output> 5FW_Rotamer.ats.sdf
+
+==============================================================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger not set
+   <> Default (default)
+   <identifier>  (default)
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+==============================================================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-align_scaffold_atoms not set
+-align_ensemble_atoms not set
+-align_rigid not set
+-bond_type not set
+   <bond_comparison_type> BondOrderOrAromaticWithRingness (default)
+-atom_type not set
+   <atom_comparison_type> ElementType (default)
+-solution_type not set
+   <> Connected (default)
+
+==============================================================================================================================================================
+
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+=crt=bcl::app=> the isomorphism is not equal to the size of scaffold
+
+==============================================================================================================================================================
+=slt=bcl=> bcl has run for 00:00:00, peak virtual memory used: 134 MB, peak physical RAM used: 73 MB

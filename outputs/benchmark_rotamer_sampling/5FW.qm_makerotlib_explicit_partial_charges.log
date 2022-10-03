@@ -1,0 +1,665 @@
+core.init: Checking for fconfig files in pwd and ./rosetta/flags 
+core.init: Rosetta version: 2022.29.post.dev+1114.brownbp1.vmulligmultiscorefunction.2621cbc3 2621cbc394cc6cd49a7d89ab11e5c6d58f1a8304 https://brownbp1@github.com/RosettaCommons/main.git 2022-08-01T14:12:09
+core.init: command: /home/brownbp1/Rosetta/main/source/bin/rosetta_scripts.linuxgccrelease -parser:protocol /home/brownbp1/bensbin/ncaa_tutorial_rdg/scripts/Mutate.xml -in:file:s /home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/l_alpha_helix.pdb -in:path:database /home/brownbp1/Rosetta/main/database/ -parser:script_vars prefix=5FW.qm_makerotlib_explicit_partial_charges -parser:script_vars pos=8 -parser:script_vars res=5FW -extra_res_fa /home/brownbp1/bensbin/ncaa_tutorial_rdg/outputs/manual/8_OptionalMakeRotLibRotamers/5FW.params -use_input_sc true -out:prefix 5FW.qm_makerotlib_explicit_partial_charges -out:pdb_gz true -nstruct 1 -in:file:fullatom -ignore_zero_occupancy false -linmem_ig 10 -mute core.select.residue_selector.PrimarySequenceNeighborhoodSelector -overwrite
+basic.random.init_random_generator: 'RNG device' seed mode, using '/dev/urandom', seed=1229125062 seed_offset=0 real_seed=1229125062
+basic.random.init_random_generator: RandomGenerator:init: Normal mode, seed=1229125062 RG_type=mt19937
+protocols.jd2.PDBJobInputter: Instantiate PDBJobInputter
+protocols.jd2.PDBJobInputter: PDBJobInputter::fill_jobs
+protocols.jd2.PDBJobInputter: pushed /home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/l_alpha_helix.pdb nstruct index 1
+protocols.evaluation.ChiWellRmsdEvaluatorCreator: Evaluation Creator active ... 
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/l_alpha_helix.pdb
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 987 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 1.11 seconds.
+core.import_pose.import_pose: File '/home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/l_alpha_helix.pdb' automatically determined to be of type PDB
+protocols.rosetta_scripts.RosettaScriptsParser: dock_design_filename=/home/brownbp1/bensbin/ncaa_tutorial_rdg/scripts/Mutate.xml
+protocols.rosetta_scripts.RosettaScriptsParser: Variable substitution will occur with the following values: '%%pos%%'='8';  '%%prefix%%'='5FW.qm_makerotlib_explicit_partial_charges';  '%%res%%'='5FW';  
+protocols.rosetta_scripts.RosettaScriptsParser: Substituted script:
+<ROSETTASCRIPTS>
+        <SCOREFXNS>
+		<ScoreFunction name="r" weights="ref2015"/>
+                <ScoreFunction name="rw" weights="ref2015">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+                <ScoreFunction name="rcw" weights="ref2015_cart">
+                        <Reweight scoretype="coordinate_constraint" weight="1.0"/>
+                </ScoreFunction>
+        </SCOREFXNS>
+        <LIGAND_AREAS>
+        </LIGAND_AREAS>
+        <INTERFACE_BUILDERS>
+        </INTERFACE_BUILDERS>
+        <MOVEMAP_BUILDERS>
+        </MOVEMAP_BUILDERS>
+	<RESIDUE_SELECTORS>
+		<Index name="pos" resnums="8"/>
+		<PrimarySequenceNeighborhood name="seq_nbrs" selector="pos" lower="1" upper="1" />
+                <Neighborhood name="nbrs" selector="pos" distance="4.0"/>
+                <Not name="not_nbrs" selector="nbrs"/>
+	</RESIDUE_SELECTORS>
+        <TASKOPERATIONS>
+                <RestrictToRepacking name="rtrp"/>
+                <InitializeFromCommandline name="ifcl" />
+                <ExtraRotamersGeneric name="erg" ex1="true" ex2="true"/>
+                <IncludeCurrent name="ic"/>
+                <OperateOnResidueSubset name="repackonly_pos" selector="pos" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_nbrs" selector="nbrs" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notnbrs" selector="not_nbrs" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+        </TASKOPERATIONS>
+        <FILTERS>
+        </FILTERS>
+        <SIMPLE_METRICS>
+	</SIMPLE_METRICS>
+	<PACKER_PALETTES>
+	</PACKER_PALETTES>
+        <MOVERS>
+		# Trajectory recorder
+		<PDBTrajectoryRecorder name="record_pdb" stride="100" filename="MH_Traj.pdb.gz" cumulate_jobs="0" cumulate_replicas="0"/>
+
+		# Constraint movers
+                <AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1"/>
+                <ClearConstraintsMover name="uncst"/>
+                <AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="false" bound_width="0"
+                sidechain="true" native="false" func_groups="false"/>
+
+                # Minimization movers
+                <MinMover name="min" scorefxn="rw" chi="true" bb="true" cartesian="false"/>
+                <MinMover name="minc" scorefxn="rcw" chi="true" bb="true" cartesian="true"/>
+                <ParsedProtocol name="min_cycle">
+			<Add mover_name="cst"/>
+                        <Add mover_name="min"/>
+			<Add mover_name="uncst"/>
+                </ParsedProtocol>
+
+                # Relax
+                <VirtualRoot name="root" removable="1" />
+                <VirtualRoot name="remove" remove="1" />
+                <FastRelax name="relax" scorefxn="rw" ramp_down_constraints="true"
+			repeats="2" task_operations="rtrp,repack_nbrs,fix_notnbrs" cartesian="false"/>
+                <FastRelax name="relax_cart" scorefxn="rcw" ramp_down_constraints="false"
+			repeats="1" task_operations="rtrp,repack_nbrs,fix_notnbrs" cartesian="true"/>
+                <FastRelax name="relax_cart_ramp" scorefxn="rcw" ramp_down_constraints="true"
+			repeats="1" task_operations="rtrp,repack_nbrs,fix_notnbrs" cartesian="true"/>
+                <ParsedProtocol name="relax_cycle">
+                        <Add mover_name="root"/>
+                        <Add mover_name="relax_cst"/>
+                        <Add mover_name="relax"/>
+                        <Add mover_name="remove"/>
+                        <Add mover_name="uncst"/>
+			<Add mover_name="relax_cart"/>
+			<Add mover_name="relax_cart_ramp"/>
+		</ParsedProtocol>
+	
+		# Repack / design movers
+		<MutateResidue name="mutate" residue_selector="pos" new_res="5FW" preserve_atom_coords="false" mutate_self="false" />
+
+                # MCMC
+                <Sidechain name="sidechain" preserve_detailed_balance="1" task_operations="repackonly_pos,rtrp" prob_withinrot="0.5"/>
+		<Shear name="shear" residue_selector="seq_nbrs" scorefxn="r" temperature="0.6" nmoves="1" angle_max="2.0" preserve_detailed_balance="1"/>
+		<MetropolisHastings name="mh" scorefxn="r" temperature="0.6" trials="1000000">
+                        <Add mover_name="record_pdb"/>
+			<Add mover_name="sidechain"/>
+                        <Add mover_name="shear"/>
+                </MetropolisHastings>
+
+        </MOVERS>
+        <APPLY_TO_POSE>
+        </APPLY_TO_POSE>
+        <PROTOCOLS>
+		<Add mover_name="mutate"/>
+		<Add mover_name="relax_cycle"/>
+		<Add mover_name="mh"/>
+        </PROTOCOLS>
+        <OUTPUT />
+</ROSETTASCRIPTS>
+protocols.rosetta_scripts.RosettaScriptsParser: Validating input script...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: Generating XML Schema for rosetta_scripts...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: ...done
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: Initializing schema validator...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: ...done
+protocols.rosetta_scripts.RosettaScriptsParser: ...done
+protocols.rosetta_scripts.RosettaScriptsParser: Parsed script:
+<ROSETTASCRIPTS>
+	<SCOREFXNS>
+		<ScoreFunction name="r" weights="ref2015"/>
+		<ScoreFunction name="rw" weights="ref2015">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+		<ScoreFunction name="rcw" weights="ref2015_cart">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+	</SCOREFXNS>
+	<LIGAND_AREAS/>
+	<INTERFACE_BUILDERS/>
+	<MOVEMAP_BUILDERS/>
+	<RESIDUE_SELECTORS>
+		<Index name="pos" resnums="8"/>
+		<PrimarySequenceNeighborhood lower="1" name="seq_nbrs" selector="pos" upper="1"/>
+		<Neighborhood distance="4.0" name="nbrs" selector="pos"/>
+		<Not name="not_nbrs" selector="nbrs"/>
+	</RESIDUE_SELECTORS>
+	<TASKOPERATIONS>
+		<RestrictToRepacking name="rtrp"/>
+		<InitializeFromCommandline name="ifcl"/>
+		<ExtraRotamersGeneric ex1="true" ex2="true" name="erg"/>
+		<IncludeCurrent name="ic"/>
+		<OperateOnResidueSubset name="repackonly_pos" selector="pos">
+			<RestrictToRepackingRLT/>
+		</OperateOnResidueSubset>
+		<OperateOnResidueSubset name="repack_nbrs" selector="nbrs">
+			<RestrictToRepackingRLT/>
+		</OperateOnResidueSubset>
+		<OperateOnResidueSubset name="fix_notnbrs" selector="not_nbrs">
+			<PreventRepackingRLT/>
+		</OperateOnResidueSubset>
+	</TASKOPERATIONS>
+	<FILTERS/>
+	<SIMPLE_METRICS/>
+	<PACKER_PALETTES/>
+	<MOVERS>
+		<PDBTrajectoryRecorder cumulate_jobs="0" cumulate_replicas="0" filename="MH_Traj.pdb.gz" name="record_pdb" stride="100"/>
+		<AddConstraintsToCurrentConformationMover CA_only="0" bb_only="1" coord_dev="1.0" name="cst"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover bound_width="0" bounded="false" coord_dev="1.0" func_groups="false" name="relax_cst" native="false" sidechain="true"/>
+		<MinMover bb="true" cartesian="false" chi="true" name="min" scorefxn="rw"/>
+		<MinMover bb="true" cartesian="true" chi="true" name="minc" scorefxn="rcw"/>
+		<ParsedProtocol name="min_cycle">
+			<Add mover_name="cst"/>
+			<Add mover_name="min"/>
+			<Add mover_name="uncst"/>
+		</ParsedProtocol>
+		<VirtualRoot name="root" removable="1"/>
+		<VirtualRoot name="remove" remove="1"/>
+		<FastRelax cartesian="false" name="relax" ramp_down_constraints="true" repeats="2" scorefxn="rw" task_operations="rtrp,repack_nbrs,fix_notnbrs"/>
+		<FastRelax cartesian="true" name="relax_cart" ramp_down_constraints="false" repeats="1" scorefxn="rcw" task_operations="rtrp,repack_nbrs,fix_notnbrs"/>
+		<FastRelax cartesian="true" name="relax_cart_ramp" ramp_down_constraints="true" repeats="1" scorefxn="rcw" task_operations="rtrp,repack_nbrs,fix_notnbrs"/>
+		<ParsedProtocol name="relax_cycle">
+			<Add mover_name="root"/>
+			<Add mover_name="relax_cst"/>
+			<Add mover_name="relax"/>
+			<Add mover_name="remove"/>
+			<Add mover_name="uncst"/>
+			<Add mover_name="relax_cart"/>
+			<Add mover_name="relax_cart_ramp"/>
+		</ParsedProtocol>
+		<MutateResidue mutate_self="false" name="mutate" new_res="5FW" preserve_atom_coords="false" residue_selector="pos"/>
+		<Sidechain name="sidechain" preserve_detailed_balance="1" prob_withinrot="0.5" task_operations="repackonly_pos,rtrp"/>
+		<Shear angle_max="2.0" name="shear" nmoves="1" preserve_detailed_balance="1" residue_selector="seq_nbrs" scorefxn="r" temperature="0.6"/>
+		<MetropolisHastings name="mh" scorefxn="r" temperature="0.6" trials="1000000">
+			<Add mover_name="record_pdb"/>
+			<Add mover_name="sidechain"/>
+			<Add mover_name="shear"/>
+		</MetropolisHastings>
+	</MOVERS>
+	<APPLY_TO_POSE/>
+	<PROTOCOLS>
+		<Add mover_name="mutate"/>
+		<Add mover_name="relax_cycle"/>
+		<Add mover_name="mh"/>
+	</PROTOCOLS>
+	<OUTPUT/>
+</ROSETTASCRIPTS>
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/DonStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/AccStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/all.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/prepro.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.all.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.gly.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.pro.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.valile.txt
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+core.scoring.P_AA: shapovalov_lib::shap_p_aa_pp_smooth_level of 1( aka low_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/shapovalov/10deg/kappa131/a20.prop
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/PairEPotential/pdb_pair_stats_fine
+basic.io.database: Database file opened: scoring/score_functions/InterchainPotential/interchain_env_log.txt
+basic.io.database: Database file opened: scoring/score_functions/InterchainPotential/interchain_pair_log.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/env_log.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/cbeta_den.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/pair_log.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/cenpack_log.txt
+core.scoring.ramachandran: shapovalov_lib::shap_rama_smooth_level of 4( aka highest_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/rama/shapovalov/kappa25/all.ramaProb
+protocols.jd2.parser.ScoreFunctionLoader: defined score function "r" with weights "ref2015"
+protocols.jd2.parser.ScoreFunctionLoader: defined score function "rw" with weights "ref2015"
+protocols.jd2.parser.ScoreFunctionLoader:  setting rw weight coordinate_constraint to 1
+core.energy_methods.CartesianBondedEnergy: Initializing IdealParametersDatabase with default Ks=300 , 80 , 80 , 10 , 80
+basic.io.database: Database file opened: scoring/score_functions/bondlength_bondangle/default-lengths.txt
+core.energy_methods.CartesianBondedEnergy: Read 759 bb-independent lengths.
+basic.io.database: Database file opened: scoring/score_functions/bondlength_bondangle/default-angles.txt
+core.energy_methods.CartesianBondedEnergy: Read 1434 bb-independent angles.
+basic.io.database: Database file opened: scoring/score_functions/bondlength_bondangle/default-torsions.txt
+core.energy_methods.CartesianBondedEnergy: Read 1 bb-independent torsions.
+basic.io.database: Database file opened: scoring/score_functions/bondlength_bondangle/default-improper.txt
+core.energy_methods.CartesianBondedEnergy: Read 529 bb-independent improper tors.
+protocols.jd2.parser.ScoreFunctionLoader: defined score function "rcw" with weights "ref2015_cart"
+protocols.jd2.parser.ScoreFunctionLoader:  setting rcw weight coordinate_constraint to 1
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "rtrp" of type RestrictToRepacking
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "ifcl" of type InitializeFromCommandline
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "erg" of type ExtraRotamersGeneric
+core.pack.task.operation.TaskOperation: TaskOperation::parse_tag method called with no effect for Tag with type IncludeCurrent. Probably due to (un/mis)implemented virtual method in derived class.
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "ic" of type IncludeCurrent
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "repackonly_pos" of type OperateOnResidueSubset
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "repack_nbrs" of type OperateOnResidueSubset
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "fix_notnbrs" of type OperateOnResidueSubset
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "record_pdb" of type PDBTrajectoryRecorder
+core.select.residue_selector.util: [ WARNING ] Selector name is empty!
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "cst" of type AddConstraintsToCurrentConformationMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "uncst" of type ClearConstraintsMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax_cst" of type AtomCoordinateCstMover
+protocols.minimization_packing.MinMover: Options chi, bb: 1, 1 omega: 1
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "min" of type MinMover
+protocols.minimization_packing.MinMover: Options chi, bb: 1, 1 omega: 1
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "minc" of type MinMover
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "cst"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "min"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "uncst"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "min_cycle" of type ParsedProtocol
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "root" of type VirtualRoot
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "remove" of type VirtualRoot
+protocols.relax.RelaxScriptManager: Reading relax scripts list from database.
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015
+protocols.relax.RelaxScriptManager: Looking for MonomerRelax2019.txt
+protocols.relax.RelaxScriptManager: ================== Reading script file: /home/brownbp1/Rosetta/main/database/sampling/relax_scripts/MonomerRelax2019.txt ==================
+protocols.relax.RelaxScriptManager: repeat %%nrepeats%%
+protocols.relax.RelaxScriptManager: coord_cst_weight 1.0
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.040
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.051
+protocols.relax.RelaxScriptManager: min 0.01
+protocols.relax.RelaxScriptManager: coord_cst_weight 0.5
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.265
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.280
+protocols.relax.RelaxScriptManager: min 0.01
+protocols.relax.RelaxScriptManager: coord_cst_weight 0.0
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.559
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.581
+protocols.relax.RelaxScriptManager: min 0.01
+protocols.relax.RelaxScriptManager: coord_cst_weight 0.0
+protocols.relax.RelaxScriptManager: scale:fa_rep 1
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: min 0.00001
+protocols.relax.RelaxScriptManager: accept_to_best
+protocols.relax.RelaxScriptManager: endrepeat
+core.pack.task.xml_util: Object relax reading the following task_operations: Adding the following task operations
+rtrp repack_nbrs fix_notnbrs 
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax" of type FastRelax
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015
+core.pack.task.xml_util: Object relax_cart reading the following task_operations: Adding the following task operations
+rtrp repack_nbrs fix_notnbrs 
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax_cart" of type FastRelax
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015
+core.pack.task.xml_util: Object relax_cart_ramp reading the following task_operations: Adding the following task operations
+rtrp repack_nbrs fix_notnbrs 
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax_cart_ramp" of type FastRelax
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "root"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cst"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "remove"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "uncst"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cart"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cart_ramp"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax_cycle" of type ParsedProtocol
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "mutate" of type MutateResidue
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib_fixes_enable option is true.
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib::shap_dun10_smooth_level of 1( aka lowest_smooth ) got activated.
+core.pack.dunbrack.RotamerLibrary: Binary rotamer library selected: /home/brownbp1/Rosetta/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin
+core.pack.dunbrack.RotamerLibrary: Using Dunbrack library binary file '/home/brownbp1/Rosetta/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin'.
+core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 0.18 seconds to load from binary
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "sidechain" of type Sidechain
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "shear" of type Shear
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "mh" of type MetropolisHastings
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "mutate"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cycle"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "mh"
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/brownbp1/bensbin/ncaa_tutorial_rdg/inputs/l_alpha_helix.pdb
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MutateResidue - mutate=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+basic.io.database: Database file opened: scoring/score_functions/elec_cp_reps.dat
+core.scoring.elec.util: Read 40 countpair representative atoms
+core.pack.rotamers.SingleNCAARotamerLibraryCreator: Reading in rot lib /home/brownbp1/Rosetta/main/database//rotamer/ncaa_rotlibs/5FW.rotlib...
+protocols.relax.FastRelax: CMD: repeat  103.225  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  103.225  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -13.9519  0  0  0.022
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -13.9519  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -12.6093  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -17.0302  0.0962449  0.0962449  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -17.8628  0.0962449  0.0962449  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -8.2984  0.0962449  0.0962449  0.14575
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -14.5376  0.0962449  0.0962449  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -14.381  0.0962449  0.0962449  0.154
+protocols.relax.FastRelax: CMD: min  -14.4353  0.0968586  0.0968586  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -18.6164  0.0968586  0.0968586  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -15.7326  0.0968586  0.0968586  0.30745
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -19.1537  0.0968586  0.0968586  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -19.1075  0.0968586  0.0968586  0.31955
+protocols.relax.FastRelax: CMD: min  -19.1155  0.0969411  0.0969411  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -19.1155  0.0969411  0.0969411  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -18.235  0.0969411  0.0969411  0.55
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -18.235  0.0969411  0.0969411  0.55
+protocols.relax.FastRelax: CMD: min  -22.7483  0.398798  0.398798  0.55
+protocols.relax.FastRelax: MRP: 0  -22.7483  -22.7483  0.398798  0.398798  
+protocols.relax.FastRelax: CMD: accept_to_best  -22.7483  0.398798  0.398798  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -22.7483  0.398798  0.398798  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  170.014  0.398798  0.398798  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  166.68  0.398798  0.398798  0.022
+core.pack.pack_rotamers: built 3 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -4.62506  0.398798  0.398798  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -4.42432  0.398798  0.398798  0.02805
+protocols.relax.FastRelax: CMD: min  -21.0152  0.123057  0.123057  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -22.2197  0.123057  0.123057  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -17.5014  0.123057  0.123057  0.14575
+core.pack.pack_rotamers: built 9 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -18.167  0.123057  0.123057  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -17.9391  0.123057  0.123057  0.154
+protocols.relax.FastRelax: CMD: min  -18.0141  0.123666  0.123666  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -20.5644  0.123666  0.123666  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -16.4034  0.123666  0.123666  0.30745
+core.pack.pack_rotamers: built 9 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -23.4856  0.123666  0.123666  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -23.4213  0.123666  0.123666  0.31955
+protocols.relax.FastRelax: CMD: min  -23.4313  0.12373  0.12373  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -23.4313  0.12373  0.12373  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -22.2063  0.12373  0.12373  0.55
+core.pack.pack_rotamers: built 8 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -22.2063  0.12373  0.12373  0.55
+protocols.relax.FastRelax: CMD: min  -24.93  0.333594  0.333594  0.55
+protocols.relax.FastRelax: MRP: 1  -24.93  -24.93  0.333594  0.333594  
+protocols.relax.FastRelax: CMD: accept_to_best  -24.93  0.333594  0.333594  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -24.93  0.333594  0.333594  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax_cart=======================
+core.energy_methods.CartesianBondedEnergy: Creating new peptide-bonded energy container (16)
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CB , CG , CD1, CD2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CB , CG , CD1, NE1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CB , CG , CD1,1HD1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CG , CD1, NE1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CG , CD1,1HD1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  NE1, CG , CD1,1HD1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CG , CD2, CE2, CE3 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CG , CD2, CE2, NE1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CG , CD2, CE2, CZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE3, CD2, CE2, NE1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE3, CD2, CE2, CZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  NE1, CD2, CE2, CZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CG , CD2, CE3, CE2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CG , CD2, CE3, CZ2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CG , CD2, CE3,1HE3 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE2, CD2, CE3, CZ2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE2, CD2, CE3,1HE3 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CZ2, CD2, CE3,1HE3 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CE2, CZ1, NE1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CE2, CZ1, CT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CE2, CZ1,1HZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  NE1, CE2, CZ1, CT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  NE1, CE2, CZ1,1HZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CT2, CE2, CZ1,1HZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CE3, CZ2,1HE3 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CE3, CZ2, FT1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CD2, CE3, CZ2, CT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW: 1HE3, CE3, CZ2, FT1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW: 1HE3, CE3, CZ2, CT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  FT1, CE3, CZ2, CT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE2, CZ1, CT2,1HZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE2, CZ1, CT2, CZ2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE2, CZ1, CT2,1HT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW: 1HZ1, CZ1, CT2, CZ2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW: 1HZ1, CZ1, CT2,1HT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CZ2, CZ1, CT2,1HT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE3, CZ2, CT2, FT1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE3, CZ2, CT2, CZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CE3, CZ2, CT2,1HT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  FT1, CZ2, CT2, CZ1 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  FT1, CZ2, CT2,1HT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined torsion 5FW:  CZ1, CZ2, CT2,1HT2 to DB with mu0 = 0, K = 80, period = 2
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CA,N,H to DB with theta0 = 2.02435 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: N,CA,C to DB with theta0 = 1.88555 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: N,CA,CB to DB with theta0 = 1.94255 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: N,CA,HA to DB with theta0 = 1.86875 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: C,CA,CB to DB with theta0 = 1.89265 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: C,CA,HA to DB with theta0 = 1.959 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CB,CA,HA to DB with theta0 = 1.91575 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CA,C,O to DB with theta0 = 2.09813 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CA,CB,CG to DB with theta0 = 1.97462 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CA,CB,1HB to DB with theta0 = 1.88924 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CA,CB,2HB to DB with theta0 = 1.87262 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CG,CB,1HB to DB with theta0 = 1.93159 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CG,CB,2HB to DB with theta0 = 1.92831 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: 1HB,CB,2HB to DB with theta0 = 1.86301 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CB,CG,CD1 to DB with theta0 = 2.20776 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CB,CG,CD2 to DB with theta0 = 2.21839 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CD1,CG,CD2 to DB with theta0 = 1.85541 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CG,CD1,NE1 to DB with theta0 = 1.9259 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CG,CD1,1HD1 to DB with theta0 = 2.2579 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: NE1,CD1,1HD1 to DB with theta0 = 2.09939 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CG,CD2,CE2 to DB with theta0 = 1.87133 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CG,CD2,CE3 to DB with theta0 = 2.33013 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CE2,CD2,CE3 to DB with theta0 = 2.08171 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CD1,NE1,CE2 to DB with theta0 = 1.89979 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CD1,NE1,1HE1 to DB with theta0 = 2.18172 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CE2,NE1,1HE1 to DB with theta0 = 2.18721 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CD2,CE2,NE1 to DB with theta0 = 1.87207 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CD2,CE2,CZ1 to DB with theta0 = 2.13379 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: NE1,CE2,CZ1 to DB with theta0 = 2.27732 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CD2,CE3,CZ2 to DB with theta0 = 2.04725 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CD2,CE3,1HE3 to DB with theta0 = 2.13529 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CZ2,CE3,1HE3 to DB with theta0 = 2.10062 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CE2,CZ1,CT2 to DB with theta0 = 2.05653 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CE2,CZ1,1HZ1 to DB with theta0 = 2.11863 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CT2,CZ1,1HZ1 to DB with theta0 = 2.10802 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CE3,CZ2,FT1 to DB with theta0 = 2.07249 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CE3,CZ2,CT2 to DB with theta0 = 2.15948 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: FT1,CZ2,CT2 to DB with theta0 = 2.05121 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CZ1,CT2,CZ2 to DB with theta0 = 2.08754 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CZ1,CT2,1HT2 to DB with theta0 = 2.11774 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CZ2,CT2,1HT2 to DB with theta0 = 2.07789 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: N,CA, to DB with d0 = 1.45283 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: N,H, to DB with d0 = 1.01198 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CA,C, to DB with d0 = 1.52875 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CA,CB, to DB with d0 = 1.55807 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CA,HA, to DB with d0 = 1.09165 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: C,O, to DB with d0 = 1.2397 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CB,CG, to DB with d0 = 1.49568 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CB,1HB, to DB with d0 = 1.09722 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CB,2HB, to DB with d0 = 1.09625 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CG,CD1, to DB with d0 = 1.37523 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CG,CD2, to DB with d0 = 1.438 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CD1,NE1, to DB with d0 = 1.3798 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CD1,1HD1, to DB with d0 = 1.08164 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CD2,CE2, to DB with d0 = 1.42499 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CD2,CE3, to DB with d0 = 1.40775 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: NE1,CE2, to DB with d0 = 1.38206 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: NE1,1HE1, to DB with d0 = 1.01075 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CE2,CZ1, to DB with d0 = 1.39821 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CE3,CZ2, to DB with d0 = 1.38195 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CE3,1HE3, to DB with d0 = 1.08652 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CZ1,CT2, to DB with d0 = 1.39174 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CZ1,1HZ1, to DB with d0 = 1.08618 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CZ2,FT1, to DB with d0 = 1.36294 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CZ2,CT2, to DB with d0 = 1.40441 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined length 5FW: CT2,1HT2, to DB with d0 = 1.08516 , Kd = 300
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: C,N,CA to DB with theta0 = 2.15149 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CB,CA,C to DB with theta0 = 1.89265 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CA,C,N to DB with theta0 = 2.04092 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: O,C,N to DB with theta0 = 2.14327 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: CA,N,C to DB with theta0 = 2.15149 , Ktheta = 80
+core.energy_methods.CartesianBondedEnergy: Adding undefined angle 5FW: H,N,C to DB with theta0 = 2.10091 , Ktheta = 80
+protocols.relax.FastRelax: CMD: repeat  -22.5123  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -22.5123  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -26.1121  0  0  0.022
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -26.1121  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -26.0708  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -35.1056  0.40553  0.40553  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -35.1056  0.40553  0.40553  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -29.9509  0.40553  0.40553  0.14575
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -29.9509  0.40553  0.40553  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -29.5896  0.40553  0.40553  0.154
+protocols.relax.FastRelax: CMD: min  -32.0551  0.342809  0.342809  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -32.0551  0.342809  0.342809  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -29.3375  0.342809  0.342809  0.30745
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -29.3375  0.342809  0.342809  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -29.1232  0.342809  0.342809  0.31955
+protocols.relax.FastRelax: CMD: min  -30.0709  0.206805  0.206805  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -30.0709  0.206805  0.206805  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -27.5808  0.206805  0.206805  0.55
+core.pack.pack_rotamers: built 3 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -27.5808  0.206805  0.206805  0.55
+protocols.relax.FastRelax: CMD: min  -27.9698  0.171319  0.171319  0.55
+protocols.relax.FastRelax: MRP: 0  -27.9698  -27.9698  0.171319  0.171319  
+protocols.relax.FastRelax: CMD: accept_to_best  -27.9698  0.171319  0.171319  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -27.9698  0.171319  0.171319  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax_cart_ramp=======================
+protocols.relax.FastRelax: CMD: repeat  -27.9698  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -27.9698  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -32.4399  0  0  0.022
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -32.4399  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -32.3887  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -35.1022  0.252465  0.252465  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -35.1022  0.252465  0.252465  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -30.1993  0.252465  0.252465  0.14575
+core.pack.pack_rotamers: built 5 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -30.1993  0.252465  0.252465  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -29.8556  0.252465  0.252465  0.154
+protocols.relax.FastRelax: CMD: min  -32.1361  0.173169  0.173169  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -32.1361  0.173169  0.173169  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -29.5262  0.173169  0.173169  0.30745
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -29.5262  0.173169  0.173169  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -29.3204  0.173169  0.173169  0.31955
+protocols.relax.FastRelax: CMD: min  -30.0672  0.046782  0.046782  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -30.0672  0.046782  0.046782  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -27.5954  0.046782  0.046782  0.55
+core.pack.pack_rotamers: built 3 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -27.5954  0.046782  0.046782  0.55
+protocols.relax.FastRelax: CMD: min  -28.0281  0.0438013  0.0438013  0.55
+protocols.relax.FastRelax: MRP: 0  -28.0281  -28.0281  0.0438013  0.0438013  
+protocols.relax.FastRelax: CMD: accept_to_best  -28.0281  0.0438013  0.0438013  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -28.0281  0.0438013  0.0438013  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MetropolisHastings - mh=======================
+protocols.canonical_sampling.MetropolisHastingsMover:  obtained output name from JobDistributor 
+protocols.canonical_sampling.MetropolisHastingsMover: no temperature controller in MetropolisHastings defined... generating FixedTemperatureController
+protocols.canonical_sampling.MetropolisHastingsMover: Initializing Sidechain
+protocols.canonical_sampling.MetropolisHastingsMover: Initializing Shear
+protocols.canonical_sampling.MetropolisHastingsMover: Initializing PDBTrajectoryRecorder
+protocols.canonical_sampling.MetropolisHastingsMover: 
+------------------------------------------------------------
+ Scores                       Weight   Raw Score Wghtd.Score
+------------------------------------------------------------
+ fa_atr                       1.000     -56.736     -56.736
+ fa_rep                       0.550       7.910       4.351
+ fa_sol                       1.000      43.568      43.568
+ fa_intra_rep                 0.005       8.916       0.045
+ fa_intra_sol_xover4          1.000       0.384       0.384
+ lk_ball_wtd                  1.000      -1.295      -1.295
+ fa_elec                      1.000     -20.098     -20.098
+ pro_close                    1.250       0.000       0.000
+ hbond_sr_bb                  1.000     -13.872     -13.872
+ hbond_lr_bb                  1.000       0.000       0.000
+ hbond_bb_sc                  1.000       0.000       0.000
+ hbond_sc                     1.000       0.000       0.000
+ dslf_fa13                    1.250       0.000       0.000
+ omega                        0.400       0.451       0.181
+ fa_dun                       0.700       2.367       1.657
+ p_aa_pp                      0.600      -5.071      -3.043
+ yhh_planarity                0.625       0.000       0.000
+ ref                          1.000      19.870      19.870
+ rama_prepro                  0.450     -11.446      -5.151
+---------------------------------------------------
+ Total weighted score:                      -30.140
+protocols.canonical_sampling.MetropolisHastingsMover: Initial Score:
+Running 1000000 trials...
+protocols.canonical_sampling.MetropolisHastingsMover: Finalizing Sidechain
+protocols.canonical_sampling.MetropolisHastingsMover: Finalizing Shear
+protocols.canonical_sampling.MetropolisHastingsMover: Finalizing PDBTrajectoryRecorder
+protocols.moves.TrialCounter:       ShearMover trials= 499620;  accepts= 0.8185;  energy_drop/trial=  -0.00055
+protocols.moves.TrialCounter:       sc_chi_rot trials= 200089;  accepts= 0.0821;  energy_drop/trial=  -0.00193
+protocols.moves.TrialCounter:      sc_chi_unif trials=  50137;  accepts= 0.0172;  energy_drop/trial=   0.02822
+protocols.moves.TrialCounter: sc_chi_withinrot trials= 250154;  accepts= 0.2078;  energy_drop/trial=  -0.00299
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.jd2.JobDistributor: 5FW.qm_makerotlib_explicit_partial_chargesl_alpha_helix_0001 reported success in 1255 seconds
+protocols.jd2.JobDistributor: no more batches to process... 
+protocols.jd2.JobDistributor: 1 jobs considered, 1 jobs attempted in 1255 seconds
+protocols.jd2.JobDistributor: [ WARNING ] The following options have been set, but have not yet been used:
+	-packing:linmem_ig 10
+	-packing:use_input_sc 
+
+basic.citation_manager.CitationManager: 
+The following Rosetta modules or third-party applications were used during this run of Rosetta, and should be cited:
+
+rosetta_scripts application's citation(s):
+Fleishman SJ, Leaver-Fay A, Corn JE, Strauch E-M, Khare SD, Koga N, Ashworth J, Murphy P, Richter F, Lemmon G, Meiler J, and Baker D.  (2011).  RosettaScripts: A Scripting Language Interface to the Rosetta Macromolecular Modeling Suite.  PLoS ONE 6(6):e20161.  doi: 10.1371/journal.pone.0020161.
+
+FastRelax Mover's citation(s):
+*Tyka MD, *Keedy DA, André I, Dimaio F, Song Y, Richardson DC, Richardson JS, and Baker D.  (2011).  Alternate states of proteins revealed by detailed energy landscape mapping.  J Mol Biol 405(2):607-18.  doi: 10.1016/j.jmb.2010.11.008.  (*Co-primary authors.)
+
+Khatib F, Cooper S, Tyka MD, Xu K, Makedon I, Popovic Z, Baker D, and Players F.  (2011).  Algorithm discovery by protein folding game players.  Proc Natl Acad Sci USA 108(47):18949-53.  doi: 10.1073/pnas.1115898108.
+
+Maguire JB, Haddox HK, Strickland D, Halabiya SF, Coventry B, Griffin JR, Pulavarti SVSRK, Cummins M, Thieker DF, Klavins E, Szyperski T, DiMaio F, Baker D, and Kuhlman B.  (2021).  Perturbing the energy landscape for improved packing during computational protein design.  Proteins 89(4):436-449.  doi: 10.1002/prot.26030.
+
+
+The following UNPUBLISHED Rosetta modules were used during this run of Rosetta.  Their authors should be included in the author list when this work is published:
+
+NeighborhoodResidueSelector ResidueSelector's author(s):
+Robert Lindner, Natural Sciences and Mathematics, Ruperto-Carola University, Heidelberg, Germany [rlindner@mpimf-heidelberg.mpg.de]
+Jared Adolf-Bryfogle, Schief lab, Scripps Research Institute [jadolfbr@gmail.com]
+Gerard Daniel, Institue for Protein Design, University of Washington [gerardda@uw.edu]
+
+

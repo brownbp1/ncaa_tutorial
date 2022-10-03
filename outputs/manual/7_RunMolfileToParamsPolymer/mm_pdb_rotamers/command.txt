@@ -1,0 +1,1 @@
+(1) /home/brownbp1/Rosetta/main/source/scripts/python/public/molfile_to_params_polymer.py -i ../../6_OptionalMakePDBRotamers/5F-TRP.3D.capped.mmff94s.all.sdf -n 5FW -p 5FW --use-pdb-rotamers --all-in-one-pdb --polymer --clobber > 5FW.params.log

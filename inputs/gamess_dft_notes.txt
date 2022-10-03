@@ -1,0 +1,11 @@
+##############################
+#
+# Some general notes on selecting basis sets and DFT functionals
+#
+##############################
+
+(1) As you consider what level of theory to employ, I recommend reading the following manuscripts for guidance:
+	- Tian et al., 2020, "ff19SB: Amino-Acid-Specific Protein Backbone Parameters Trained against Quantum Mechanics Energy Surfaces in Solution", JCTC
+	- Bursch et al., 2022, "Best-practice DFT protocols for basic molecular computational chemistry", Angewandte Chemie
+(2) By default, I often use M05-2X/6-311G(d,p)-DE3 with the solvation model density (SMD) continuum water model because Tian et al. demonstrated good agreement between this level of theory and more expensive methods for canonical amino acids. It is worth noting, however, that if your non-canonical amino acid contains elements that are not "main group" elements (where "main group" can be defined as 1s1 - 1s2, 2s1 - 2s2, 2s2,2p1 - 2s2,2p6, and 3s2,3p1 - 3s2,3p6), then Minnesota functionals may substantial decrease in accuracy. Another benefit to this approach is that then the structures used to generate Rosetta NCAA params can also be used to generate molecular dynamics params that work well with Amber ff14SB and ff19SB force fields (however, note that if you are using a SB force field older than ff19SB, you will want to perform your electrostatic potential calculation for RESP using HF/6-31G(d) or B3LYP/6-31G(d) if you have a metal).
+(3) Strongly recommend following guidelines from Bursch et al. for geometry optimization recommendations outside of "main group" elements. 

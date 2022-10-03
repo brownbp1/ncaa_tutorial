@@ -1,0 +1,4 @@
+(1)  tail -n+5 ../../4_WriteInstructionsFile/5F-TRP.3D.capped.mmff94s.clean.sdf | awk '{print $4}' | grep [A-Z] > element_names.txt
+(2)  bcl.exe molecule:Properties -input_filenames ../../4_WriteInstructionsFile/5F-TRP.3D.capped.mmff94s.clean.sdf -tabulate Atom_SigmaCharge -output_table gasteiger_charges.txt -logger File gasteiger_charges.log
+(3)  tail -n+2 gasteiger_charges.txt | awk -F, '{print $2}' | tr ' ' '\n' | paste element_names.txt - | awk '{print NR,$1,$2}' > rosetta_partial_charges_file.txt
+(4)  /home/brownbp1/Rosetta/main/source/scripts/python/public/molfile_to_params_polymer.py -i ../../5_CombineInstructionsFileWithSDF/5F-TRP.3D.capped.mmff94s.rosetta_instructions.mod.sdf -n 5FW -p 5FW --use-parent-rotamers TRP --polymer --partial_charges rosetta_partial_charges_file.txt --clobber > 5FW.params.log 

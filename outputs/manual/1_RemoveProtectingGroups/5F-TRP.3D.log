@@ -1,0 +1,52 @@
+=std=bcl::util=> Logger was changed to: File with identifier: 5F-TRP.3D.log
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:Split -input_filenames ../0_Generate3DConformer/Fmoc-5F-TRP.3D.sdf -implementation 'LargestCommonSubstructure(file=../../../inputs/Fmoc.sdf, complement=1)' -output 5F-TRP.3D.sdf -logger File 5F-TRP.3D.log 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:Split
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> 5F-TRP.3D.log
+-help not set
+-readme not set
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <filenames> ../0_Generate3DConformer/Fmoc-5F-TRP.3D.sdf
+-input_start not set
+   <start> 0 (default)
+-input_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity not set
+-implementation set
+   <> LargestCommonSubstructure(file=../../../inputs/Fmoc.sdf, complement=1)
+-min_frag_size not set
+   <minimum number of atoms> 0 (default)
+-recenter not set
+-preserve_mdl_properties not set
+-output set
+   <output> 5F-TRP.3D.sdf
+
+========================================================================================================================
+
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:00, peak virtual memory used: 117 MB, peak physical RAM used: 56 MB

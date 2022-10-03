@@ -1,0 +1,4 @@
+(1)  bcl.exe molecule:ConformerGenerator -ensemble_filenames ../4_WriteInstructionsFile/5F-TRP.3D.capped.mmff94s.clean.sdf -conformers_single_file 5F-TRP.3D.capped.mmff94s.confs.sdf -top_models 100 -max_iterations 8000 -cluster -conformation_comparer SymmetryRMSD 0.25 -explicit_aromaticity -logger File 5F-TRP.3D.capped.mmff94s.confs.log
+(2)  cat ../5_CombineInstructionsFileWithSDF/5F-TRP.3D.capped.mmff94s.rosetta_instructions.mod.sdf 5F-TRP.3D.capped.mmff94s.confs.sdf > 5F-TRP.3D.capped.mmff94s.all.sdf
+(3) bcl.exe molecule:ConformerGenerator -ensemble_filenames ../5_CombineInstructionsFileWithSDF/5FW.qm.rosetta_instructions.mod.sdf -conformers_single_file 5FW.qm.confs.sdf -top_models 100 -max_iterations 8000 -cluster -conformation_comparer SymmetryRMSD 0.25 -explicit_aromaticity -logger File 5FW.qm.confs.log
+(4) cat ../5_CombineInstructionsFileWithSDF/5FW.qm.rosetta_instructions.mod.sdf 5FW.qm.confs.sdf > 5FW.qm.all.sdf

@@ -1,0 +1,103 @@
+<ROSETTASCRIPTS>
+        <SCOREFXNS>
+		<ScoreFunction name="r" weights="ref2015"/>
+                <ScoreFunction name="rw" weights="ref2015">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+                <ScoreFunction name="rcw" weights="ref2015_cart">
+                        <Reweight scoretype="coordinate_constraint" weight="1.0"/>
+                </ScoreFunction>
+        </SCOREFXNS>
+        <LIGAND_AREAS>
+        </LIGAND_AREAS>
+        <INTERFACE_BUILDERS>
+        </INTERFACE_BUILDERS>
+        <MOVEMAP_BUILDERS>
+        </MOVEMAP_BUILDERS>
+	<RESIDUE_SELECTORS>
+		<Index name="pos" resnums="%%pos%%"/>
+		<PrimarySequenceNeighborhood name="seq_nbrs" selector="pos" lower="1" upper="1" />
+                <Neighborhood name="nbrs" selector="pos" distance="4.0"/>
+                <Not name="not_nbrs" selector="nbrs"/>
+	</RESIDUE_SELECTORS>
+        <TASKOPERATIONS>
+                <RestrictToRepacking name="rtrp"/>
+                <InitializeFromCommandline name="ifcl" />
+                <ExtraRotamersGeneric name="erg" ex1="true" ex2="true"/>
+                <IncludeCurrent name="ic"/>
+                <OperateOnResidueSubset name="repackonly_pos" selector="pos" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_nbrs" selector="nbrs" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notnbrs" selector="not_nbrs" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+        </TASKOPERATIONS>
+        <FILTERS>
+        </FILTERS>
+        <SIMPLE_METRICS>
+	</SIMPLE_METRICS>
+	<PACKER_PALETTES>
+	</PACKER_PALETTES>
+        <MOVERS>
+		# Trajectory recorder
+		<PDBTrajectoryRecorder name="record_pdb" stride="100" filename="MH_Traj.pdb.gz" cumulate_jobs="0" cumulate_replicas="0"/>
+
+		# Constraint movers
+                <AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1"/>
+                <ClearConstraintsMover name="uncst"/>
+                <AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="false" bound_width="0"
+                sidechain="true" native="false" func_groups="false"/>
+
+                # Minimization movers
+                <MinMover name="min" scorefxn="rw" chi="true" bb="true" cartesian="false"/>
+                <MinMover name="minc" scorefxn="rcw" chi="true" bb="true" cartesian="true"/>
+                <ParsedProtocol name="min_cycle">
+			<Add mover_name="cst"/>
+                        <Add mover_name="min"/>
+			<Add mover_name="uncst"/>
+                </ParsedProtocol>
+
+                # Relax
+                <VirtualRoot name="root" removable="1" />
+                <VirtualRoot name="remove" remove="1" />
+                <FastRelax name="relax" scorefxn="rw" ramp_down_constraints="true"
+			repeats="2" task_operations="rtrp,repack_nbrs,fix_notnbrs" cartesian="false"/>
+                <FastRelax name="relax_cart" scorefxn="rcw" ramp_down_constraints="false"
+			repeats="1" task_operations="rtrp,repack_nbrs,fix_notnbrs" cartesian="true"/>
+                <FastRelax name="relax_cart_ramp" scorefxn="rcw" ramp_down_constraints="true"
+			repeats="1" task_operations="rtrp,repack_nbrs,fix_notnbrs" cartesian="true"/>
+                <ParsedProtocol name="relax_cycle">
+                        <Add mover_name="root"/>
+                        <Add mover_name="relax_cst"/>
+                        <Add mover_name="relax"/>
+                        <Add mover_name="remove"/>
+                        <Add mover_name="uncst"/>
+			<Add mover_name="relax_cart"/>
+			<Add mover_name="relax_cart_ramp"/>
+		</ParsedProtocol>
+	
+		# Repack / design movers
+		<MutateResidue name="mutate" residue_selector="pos" new_res="%%res%%" preserve_atom_coords="false" mutate_self="false" />
+
+                # MCMC
+                <Sidechain name="sidechain" preserve_detailed_balance="1" task_operations="repackonly_pos,rtrp" prob_withinrot="0.5"/>
+		<Shear name="shear" residue_selector="seq_nbrs" scorefxn="r" temperature="0.6" nmoves="1" angle_max="2.0" preserve_detailed_balance="1"/>
+		<MetropolisHastings name="mh" scorefxn="r" temperature="0.6" trials="1000000">
+                        <Add mover_name="record_pdb"/>
+			<Add mover_name="sidechain"/>
+                        <Add mover_name="shear"/>
+                </MetropolisHastings>
+
+        </MOVERS>
+        <APPLY_TO_POSE>
+        </APPLY_TO_POSE>
+        <PROTOCOLS>
+		<Add mover_name="mutate"/>
+		<Add mover_name="relax_cycle"/>
+		<Add mover_name="mh"/>
+        </PROTOCOLS>
+        <OUTPUT />
+</ROSETTASCRIPTS>

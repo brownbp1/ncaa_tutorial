@@ -1,0 +1,7 @@
+(1) mpirun -np 24 /home/ben/Rosetta/main/source/bin/MakeRotLib.mpi.linuxgccrelease -options_file 5FW_makerotlib_options_demo.in -extra_res_fa ../7_RunMolfileToParamsPolymer/qm_parent_rotamers_explicit_partial_charges/5FW.params
+	- This takes about 10 minutes using 24 CPUs (Intel(R) Xeon(R) CPU X5690 @ 3.47GHz)
+(2) bash ../../../scripts/combine_into_final_rotlib.sh 5FW data/ 5FW.rotlib
+(3) cp -t . ../7_RunMolfileToParamsPolymer/qm_parent_rotamers_explicit_partial_charges/5FW.params
+(4) <manually add the following two lines to our params file>
+	- NCAA_ROTLIB_PATH 5FW.rotlib
+	- NCAA_ROTLIB_NUM_ROTAMER_BINS 2 3 12

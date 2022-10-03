@@ -1,0 +1,117 @@
+=std=bcl::util=> Logger was changed to: File with identifier: 5FW.qm.confs.log
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:ConformerGenerator -ensemble_filenames ../5_CombineInstructionsFileWithSDF/5FW.qm.rosetta_instructions.mod.sdf -conformers_single_file 5FW.qm.confs.sdf -top_models 100 -max_iterations 8000 -cluster -conformation_comparer SymmetryRMSD 0.25 -explicit_aromaticity -logger File 5FW.qm.confs.log 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:ConformerGenerator
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> 5FW.qm.confs.log
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-ensemble_filenames set
+   <filenames> ../5_CombineInstructionsFileWithSDF/5FW.qm.rosetta_instructions.mod.sdf
+-ensemble_start not set
+   <start> 0 (default)
+-ensemble_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-natives not set
+-conformation_comparer set
+   <rmsd_type> SymmetryRMSD
+   <tolerance> 0.25
+-max_iterations set
+   <max_iterations> 8000
+-output_ligand_data not set
+-top_models set
+   <top_models> 100
+-failed_3D not set
+-output_rmsd_score not set
+-conformers_single_file set
+   <conformers_single_file> 5FW.qm.confs.sdf
+-conformers_separate_files not set
+-minimum_number_conformations not set
+-change_chirality not set
+-generate_3D not set
+-cluster set
+-skip_cluster not set
+-rnd_dihedral_mutate_weight not set
+   <mutate_weight> 0.0 (default)
+-skip_rotamer_dihedral_sampling not set
+-skip_bond_angle_sampling not set
+-skip_ring_sampling not set
+-clash_resolution not set
+   <max_clash_resolution_iterations> 0.1 (default)
+-max_clash_tolerance not set
+   <max_clash_tolerance> 0.1 (default)
+-rotamer_library not set
+   <> cod (default)
+
+========================================================================================================================
+
+=std=bcl::sdf=> Unrecognized MDL property line "M  ROOT 2"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_N_BB 2"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_CA_BB 3"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_C_BB 1"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_O_BB 14"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_IGNORE 17 18 30 31 32 33 20 34 35 36"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_UPPER 19"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_LOWER 16"; skipping line.
+=std=bcl::sdf=> Unrecognized MDL property line "M  POLY_PROPERTIES PROTEIN L_AA ALPHA_AA AROMATIC"; skipping line.
+=crt=bcl::app=>  iterating through ensemble in ANC - 0
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 100
+=std=bcl::chemistry=> Found 8 rotatable bonds, 1 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=> Found 1 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 4.48092 seconds
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:12, peak virtual memory used: 1385 MB, peak physical RAM used: 1271 MB
+=std=bcl::util=> Clustering has run for 4.48092 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.332179 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.024233 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.473521 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 0.124975 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.275067 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.046743 seconds
+=std=bcl::util=> Sampling Total has run for 4.75647 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.327852 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.029825 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.157321 seconds
+=std=bcl::util=> mutate_chain has run for 1.06586 seconds
+=std=bcl::util=> mutate_ring has run for 0.388102 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.897069 seconds
+=std=bcl::util=> FindFrags has run for 0.676537 seconds

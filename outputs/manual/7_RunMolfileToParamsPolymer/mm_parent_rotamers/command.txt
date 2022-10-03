@@ -1,0 +1,1 @@
+(1) /home/brownbp1/Rosetta/main/source/scripts/python/public/molfile_to_params_polymer.py -i ../../5_CombineInstructionsFileWithSDF/5F-TRP.3D.capped.mmff94s.rosetta_instructions.mod.sdf -n 5FW -p 5FW --use-parent-rotamers TRP --polymer --clobber > 5FW.params.log

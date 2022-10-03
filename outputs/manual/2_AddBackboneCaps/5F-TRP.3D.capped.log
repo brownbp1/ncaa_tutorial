@@ -1,0 +1,73 @@
+=std=bcl::util=> Logger was changed to: File with identifier: 5F-TRP.3D.capped.log
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:Reorder -input_filenames 5F-TRP.3D.capping_stages.sdf -sort Index -reverse -output_max 1 -output 5F-TRP.3D.capped.sdf -logger File 5F-TRP.3D.capped.log 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:Reorder
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> 5F-TRP.3D.capped.log
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <input_filename> 5F-TRP.3D.capping_stages.sdf
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity not set
+-randomize not set
+-sort set
+   <property> Index
+-reverse set
+-max_molecules not set
+   <filename> 18446744073709551615 (default)
+-canonicalize not set
+-atom_order not set
+-output set
+   <filename> 5F-TRP.3D.capped.sdf
+-output_max set
+   <max> 1
+-output_order not set
+
+========================================================================================================================
+
+=std=bcl::app=> Loaded ensembles with 3 molecules total in 00:00:00
+=std=bcl::descriptor=>  no values found from default Index
+=std=bcl::descriptor=>  no values found from default Index
+=std=bcl::descriptor=>  no values found from default Index
+=std=bcl::app=> Sorted 3 molecules by Index in 00:00:00
+=std=bcl::app=> Wrote ensemble containing 1 molecules to 5F-TRP.3D.capped.sdf in 00:00:00
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:00, peak virtual memory used: 117 MB, peak physical RAM used: 55 MB

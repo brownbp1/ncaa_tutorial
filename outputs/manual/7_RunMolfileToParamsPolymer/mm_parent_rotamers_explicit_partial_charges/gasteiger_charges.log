@@ -1,0 +1,74 @@
+=std=bcl::util=> Logger was changed to: File with identifier: gasteiger_charges.log
+/home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:Properties -input_filenames ../../4_WriteInstructionsFile/5F-TRP.3D.capped.mmff94s.clean.sdf -tabulate Atom_SigmaCharge -output_table gasteiger_charges.txt -logger File gasteiger_charges.log 
+BCL v4.3.0, r0, compiled on Sat Sep 17 11:23:00 2022
+=std=bcl=> executing application: molecule:Properties
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> gasteiger_charges.log
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/brownbp1/bensbin/ncaa_tutorial_rdg/from_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <filenames> ../../4_WriteInstructionsFile/5F-TRP.3D.capped.mmff94s.clean.sdf
+-input_start not set
+   <start> 0 (default)
+-input_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity not set
+-numeric_histogram not set
+-string_histogram not set
+-output_histogram not set
+   <output_histogram> molecule.histogram.txt (default)
+-statistics not set
+-tabulate set
+   <property> Atom_SigmaCharge
+-output_table set
+   <output_table> gasteiger_charges.txt
+-remove not set
+-remove_all not set
+-add not set
+-add_strings not set
+-rename not set
+-output not set
+   <filename>  (default)
+
+========================================================================================================================
+
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:00, peak virtual memory used: 117 MB, peak physical RAM used: 55 MB

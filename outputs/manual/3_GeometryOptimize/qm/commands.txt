@@ -1,0 +1,5 @@
+(1)  bash ../../../../scripts/gamess_input_from_sdf.sh ../../2_AddBackboneCaps/5F-TRP.3D.capped.sdf ../../../../inputs/gamess_geoopt_header.b3lyp.6-31Gd.txt 0 1
+(2)  /home/brownbp1/bensbin/md_scripts/QMMM/GAMESS/gamess/rungms 5F-TRP.3D.capped.inp 01 8 > 5F-TRP.3D.capped.geoopt.log
+(3)  obabel -i gamess 5F-TRP.3D.capped.geoopt.log -o sdf -O 5F-TRP.3D.capped.geoopt.sdf
+(4)  bash ../../../../scripts/gamess_input_from_sdf.sh 5F-TRP.3D.capped.geoopt.sdf ../../../../inputs/gamess_esp_header.b3lyp.6-31Gd.txt 0 1
+(5)  bash ../../../../scripts/resp.sh 5F-TRP.3D.capped.geoopt.dat 0 5FW.qm > 5FW.qm.resp.log 

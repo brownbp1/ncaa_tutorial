@@ -1,0 +1,4 @@
+(1) grep -A1000 ">ATOM" ../../5_CombineInstructionsFileWithSDF/5FW.qm.rosetta_instructions.mod.mol2 | grep -B1000 ">BOND" | head -n-1 | tail -n+2 | awk '{print $6}' | awk '{split($1,a,"."); print a[1]}' > element_names.txt
+(2) grep -A1000 ">ATOM" ../../5_CombineInstructionsFileWithSDF/5FW.qm.rosetta_instructions.mod.mol2 | grep -B1000 ">BOND" | head -n-1 | tail -n+2 | awk '{print $NF}' > partial_charges.txt
+(3) paste element_names.txt partial_charges.txt | awk '{print NR, $1,$2}' > rosetta_partial_charges_file.txt
+(4) /home/brownbp1/Rosetta/main/source/scripts/python/public/molfile_to_params_polymer.py -i ../../5_CombineInstructionsFileWithSDF/5FW.qm.rosetta_instructions.mod.mol2 -n 5FW -p 5FW --use-parent-rotamers TRP --partial_charges rosetta_partial_charges_file.txt --polymer --clobber > 5FW.params.log 

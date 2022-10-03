@@ -1,0 +1,5 @@
+(1) obminimize -c 1e-8 -cg -ff MMFF94s ../../2_AddBackboneCaps/5F-TRP.3D.capped.sdf > 5F-TRP.3D.capped.mmff94s.pdb
+(2) obabel -i pdb 5F-TRP.3D.capped.mmff94s.pdb -o sdf -O 5F-TRP.3D.capped.mmff94s.sdf
+(3) bcl.exe molecule:Properties -remove_all -input_filenames 5F-TRP.3D.capped.mmff94s.sdf -output ../../4_WriteInstructionsFile/5F-TRP.3D.capped.mmff94s.clean.sdf 
+	- alternatively, just copy the output SDF from the previous step and delete the extra MDL property lines
+(4) <manually type Rosetta instructions file information>
